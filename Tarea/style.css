@@ -1,0 +1,270 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #000000;
+}
+
+
+.icono {
+    width: 26.25px;
+    height: 26.25px;
+    
+}
+
+svg {
+    fill: white;
+    max-width: 30px;
+}
+
+.twitter-icon {
+    margin-bottom: 75px;
+    margin-top: -25px;
+}
+
+.twitter-icon svg{
+    height: 50px;
+    width: 50px;
+}
+
+.col{
+    height: 100%;
+    margin-left: 340px;
+}
+
+.col .div-icono {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+}
+
+.div-icono {
+    display: flex;
+    justify-content: baseline;
+    width: 250px;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.div-icono:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    margin-left: 5px;
+    border-radius: 95px 95px 95px 95px;
+    -webkit-border-radius: 95px 95px 95px 95px;
+    -moz-border-radius: 95px 95px 95px 95px;
+    background-color: #181818;
+}
+
+.div-icono a {
+    display: flex;
+}
+
+.sideBar-button button{
+    height: 55px;
+    width: 225px;
+    background-color: #1A8CD8;
+    border-radius: 55px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.sidebar {
+    color: #fff;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.btn-text {
+    font-size: 20px;
+}
+
+.icon-text{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.sidebar .sidebar-bottom {
+    display: flex;
+    justify-content: center;
+    width: 225px;
+}
+
+.name-profile {
+    color: white;
+}
+
+.bottom-profile {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.image-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    border-top: 1px solid #2F3336;
+    border-right: 2px solid #2F3336;
+    border-left: 2px solid #2F3336;
+}
+
+.inicio {
+    display: flex;
+    flex-direction: column;   
+    width: 500px; 
+    width: 100%;
+    border-bottom: 1px solid #2F3336;
+    position: sticky;
+}
+
+.inicio-div{
+    color: #fff;
+    margin-top: 30px;
+}
+
+.botones-inicio {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-decoration: underline;
+    justify-content: center;
+}
+
+.paraTi {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+
+.paraTi:hover {
+    background: #181818;
+}
+
+.siguiendo {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+
+.siguiendo:hover {
+    background: #181818;
+}
+
+a {
+    color: #4f575b; /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.foto {
+    border-radius: 50%;
+}
+
+.profiles {
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.arroba {
+    color: #4c5262;
+}
+
+.btn-seguir{
+    border-radius: 55px;
+    width: 120px;
+    height: 40px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.profile-seguir{
+    margin-left: 30px;
+}
+
+.profile-foto{
+    margin-right: 10px;
+}
+
+.twittear {
+    margin: 5px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    width: 90%;
+}
+
+.tweet {
+    width: 90%;
+}
+
+.twittear-feed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: self-start;
+    width: 90%;
+}
+
+.tweet-input {
+    width: 90%;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #2F3336;
+}
+
+
+.tweet span {
+    color: #71767B;
+    font-size: 23px;
+}
+
+.aside{
+    width: 150px;
+}
+
+.tweets {
+    color: #fff;
+}
+
+.tweets-feed {
+    display: flex;
+    border-top: 1px solid #2f3336;
+    border-bottom: 1px solid #2f3336;
+    margin-left: 5px;
+}
+
+.tweets-feed span {
+    color: #71767B;
+}
+
+.foto {
+    padding: 10px;
+}
+
+.feed-icons{
+    display: flex;
+}

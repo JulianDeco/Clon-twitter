@@ -1,4 +1,4 @@
-
+window.alert('Tuve problemas con el botón ocultar comentarios Juan, lo demás funciona relativamente bien digamos')
 const usuarios = () => {
     fetch('https://jsonplaceholder.typicode.com/users/')
     .then((response) => response.json())
@@ -15,11 +15,17 @@ const usuarios = () => {
                 const usuario_seleccionado = response[contador]
                 obtenerPostsUsuario(usuario_seleccionado);
             }
+            const numero_usuario = document.getElementsByClassName(`${contador}`)
+            console.log(numero_usuario)
+            console.log(numero_usuario.text)
+            if (Number(contador) === Number(numero_usuario.textContent)){
+                numero_usuario.className = numero_usuario.className + " seleccionado"
+            }
         });
 
         const a_previus_li = document.createElement('a')
         a_previus_li.className = 'page-link'
-        a_previus_li.textContent = 'Anterior'
+        a_previus_li.textContent = '<'
 
         pagination.appendChild(previus_li)
         previus_li.appendChild(a_previus_li)
@@ -29,7 +35,7 @@ const usuarios = () => {
             user_item.className = 'page-item'
 
             const a_user_item = document.createElement('a')
-            a_user_item.className = 'page_link'
+            a_user_item.className = 'page-link ' + contador
             a_user_item.textContent = contador
 
             a_user_item.addEventListener('click', function(e) {
@@ -45,23 +51,29 @@ const usuarios = () => {
 
             contador ++
         });
+        contador = 1
 
         const next_li = document.createElement('li')
         next_li.className = 'page-item'
         next_li.addEventListener('click', function(e) {
-            console.log(contador)
             if (contador < 10){
                 contador = Number(contador) + 1
                 const usuario_seleccionado = response[contador]
                 obtenerPostsUsuario(usuario_seleccionado);
 
             }
+            const numero_usuario = document.getElementsByClassName(`${contador}`)
+            console.log(numero_usuario)
+            if (Number(contador) === Number(numero_usuario.textContent)){
+                numero_usuario.className = numero_usuario.className + " seleccionado"
+            }
         });
 
 
         const a_next_li = document.createElement('a')
         a_next_li.className = 'page-link'
-        a_next_li.textContent = 'Siguiente'
+        a_next_li.textContent = '>'
+
 
         pagination.appendChild(next_li)
         next_li.appendChild(a_next_li)
@@ -85,6 +97,7 @@ function obtenerPostsUsuario(usuario) {
         
             const tweet_feed = document.createElement('div')
             tweet_feed.className = 'tweet_feed'
+            tweet_feed.setAttribute("id", element.id);
         
             const user = document.createElement('div')
             user.className = 'user'
@@ -98,7 +111,7 @@ function obtenerPostsUsuario(usuario) {
             username_user.className = 'username_user'
             username_user.textContent = ' @' + usuario.username + ' email ' + usuario.email
         
-            const title_tweet = document.createElement('h3')
+            const title_tweet = document.createElement('h4')
             title_tweet.className = 'title_tweet'
             title_tweet.textContent = element.title
             tweet_feed.appendChild(title_tweet)
@@ -111,11 +124,13 @@ function obtenerPostsUsuario(usuario) {
             const boton_commentarios = document.createElement('button')
             boton_commentarios.className = 'btn btn-primary'
             boton_commentarios.textContent = 'Comentarios'
-            boton_commentarios.setAttribute('type', 'button');
-            boton_commentarios.setAttribute('data-toggle', 'modal');
-            boton_commentarios.setAttribute('data-target', '#exampleModal'); 
+
+            const boton_ocultar_comentarios = document.createElement('button')
+            boton_ocultar_comentarios.className = 'btn btn-primary btn-borrar'
+            boton_ocultar_comentarios.textContent = 'Ocultar comentarios'
 
             tweet_feed.appendChild(boton_commentarios)
+            tweet_feed.appendChild(boton_ocultar_comentarios)
         
             user.appendChild(name_user)
             user.appendChild(username_user)
@@ -130,6 +145,12 @@ function obtenerPostsUsuario(usuario) {
                 comments(post, user)
             });
 
+            boton_ocultar_comentarios.addEventListener('click', function(e) {
+                const post = element
+                const user = usuario   
+                borrarComentarios(post, user)
+            });
+
             tweets_feed.appendChild(tweet_feed)
             tweets.appendChild(tweets_feed)
         })
@@ -142,8 +163,34 @@ function comments(post, usuario){
     fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
     .then((response) => response.json())
     .then((response) => {
-        console.log(response)
+        const tweet_feed = document.getElementById(post.id)
+        console.log(tweet_feed)
+        const ul = document.createElement('ul')
+        response.forEach((elemento) => {
+            const li = document.createElement('li')
+
+            const h3 = document.createElement('h3')
+            h3.textContent = elemento.name + " - " + elemento.email
+
+            const li2 = document.createElement('p')
+            li2.textContent = elemento.body
+
+            li.appendChild(h3)
+            li.appendChild(li2)
+            ul.appendChild(li)
+            tweet_feed.appendChild(ul)
+        })
+
+        
         // No se me ocurrió como mostrar los comentarios pero aparecen en consola
 
     })
+}
+
+function borrarComentarios(post, usuario){
+    const tweet_feed = document.getElementById(post.id)
+    while (tweet_feed.firstChild) {
+        tweet_feed.removeChild(tweet_feed.children[2]);
+    }
+    return ''
 }
